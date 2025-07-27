@@ -1,0 +1,27 @@
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 3000px) {    
+    .sidebar-header img {
+        width: calc(var(--sidebar-width) * 0.8);
+    }
+    
+    .content {
+        margin-left: var(--sidebar-width);
+    }
+    
+    .main-header {
+        left: var(--sidebar-width);
+    }
+    .home-container {
+    padding-left: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .search-bar {
+        width: 60%;
+    }
+}

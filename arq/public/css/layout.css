@@ -1,0 +1,88 @@
+
+/* Header */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    z-index: 100;
+    box-sizing: border-box;
+    transition: left 0.3s ease;
+}
+
+.logo-container img {
+  height: 20px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.search-bar {
+    display: flex;
+    width: 40%;
+    min-width: 200px;
+    max-width: 500px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background-color: #5a6268;
+}
+
+.search-bar button {
+    padding: 0 1.5rem;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #5a6268;
+}
+
+/* Home */
+.home-container {
+    max-width: 88%;
+    margin: 0 auto;
+    padding-top: 4rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.section-title {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Hover para Cards */
+.hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+

@@ -1,0 +1,12 @@
+:root {
+    --sidebar-width: 80px;
+    --icon-size: calc(var(--sidebar-width) * 0.5);
+    --icon-margin: calc(var(--sidebar-width) * 0.05);
+    --primary-color: #343a40;
+    --secondary-color: #495057;
+    --accent-color: #6c757d;
+    --text-color: #f8f9fa;
+    --header-height: 72px;
+    --content-bg: #4c5660;
+    --card-bg: #ffffff;
+}

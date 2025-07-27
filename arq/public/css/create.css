@@ -1,0 +1,53 @@
+.create-container {
+    max-width: 98%;
+    animation: fadeIn 0.5s ease-out;
+    margin: 0 auto;
+}
+
+.create-form {
+    background-color: rgba(138, 147, 155, 0.8);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.cover-preview {
+    border: 2px dashed #dee2e6;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cover-preview:hover {
+    border-color: rgba(108, 117, 125);
+    background-color: #f8f9fa;
+}
+
+.tag {
+    cursor: default;
+    transition: transform 0.2s;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+}
+
+#postContent {
+    min-height: 400px;
+    border: 1px solid #dee2e6;
+    transition: border-color 0.3s;
+}
+
+#postContent:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+@media (max-width: 768px) {
+    .create-form {
+        padding: 1.5rem;
+    }
+    
+    #postContent {
+        min-height: 300px;
+    }
+}

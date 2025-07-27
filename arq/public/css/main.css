@@ -1,0 +1,18 @@
+/* main.css */
+@import 'variables.css';
+@import 'layout.css';
+@import 'sidenavbar.css';
+@import 'forms.css';
+@import 'utilities.css';
+@import 'create.css';
+@import 'history.css';
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--content-bg);
+    color: #212529;
+    min-height: 100vh;
+    overflow-x: hidden;
+}

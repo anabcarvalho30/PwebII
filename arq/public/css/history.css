@@ -1,0 +1,56 @@
+.card-detalhes {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.card-detalhes h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-img-container {
+    overflow: hidden;
+}
+
+.card-img {
+    width: 50%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+
+.card-detalhes .historia {
+    white-space: pre-line;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.hist-info p {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: none;
+}
+
+.historia {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:2rem;
+}
+
+.texto {
+  word-wrap: break-word;
+    font-family: monospace;
+}
+
+.gap{
+    display: flex;
+gap: 2rem;
+}
+
+.gap a{
+        margin-bottom: 5px;
+
+}
