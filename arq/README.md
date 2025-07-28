@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/b1d7caac-2d53-4c6c-9a6c-3f3d528adf8f
 
 ### Design
 
-![arq](ReadmeMidia/Home.jpeg)
+![arq](ReadmeMidia/HomePage.jpeg)
 ![arq](ReadmeMidia/Regist.jpeg)
 ![arq](ReadmeMidia/Login.jpeg)
 ![arq](ReadmeMidia/UserPage.jpeg)
