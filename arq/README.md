@@ -1,4 +1,4 @@
-![Arquivo-do-medo](/ReadmeMidia/Titulo.png)
+![arq](ReadmeMidia/Titulo.png)
 
 ---
 
@@ -28,8 +28,47 @@
 
 ## Rotas
 
-![Arquivo-do-medo](/ReadmeMidia/Rotas.png)
-![Arquivo-do-medo](/ReadmeMidia/Caminho.png)
+![arq](/ReadmeMidia/Rotas.png)
+![arq](/ReadmeMidia/Caminho.png)
+
+📁 arquivo-do-medo/
+├── 📁 public/
+│   ├── 📁 css/
+│   │   ├── 📄 forms.css
+│   │   ├── 📄 create.css
+│   │   ├── 📄 layout.css
+│   │   ├── 📄 main.css
+│   │   ├── 📄 history.css
+│   │   ├── 📄 sidenavbar.css
+│   │   ├── 📄 utilities.css
+│   │   └── 📄 variables.css
+│   ├── 📁 icons/
+│   │   └── 📄 IconArq.png
+│   ├── 📁 images/
+│   │   └── 📁 covers
+│   └── 📁 js/
+│       ├── 📄 create.js
+│       └── 📄 feedback.js
+│
+├── 📁 views/
+│   ├── 📁 partials/
+│   │   ├── 📄 head.ejs
+│   │   ├── 📄 header.ejs
+│   │   └── 📄 sidebar.ejs
+│   ├── 📄 autorcard.ejs
+│   ├── 📄 card.ejs
+│   ├── 📄 create.ejs
+│   ├── 📄 edicao.ejs
+│   ├── 📄 home.ejs
+│   ├── 📄 login.ejs
+│   ├── 📄 manage.ejs
+│   ├── 📄 cardedit.ejs
+│   ├── 📄 register.ejs
+│   └── 📄 settings.ejs
+├── 📄 app.js
+├── 📄 database.js
+├── 📄 package-lock.json
+└── 📄 package.json
 
 ---
 
@@ -53,9 +92,9 @@ https://github.com/user-attachments/assets/b1d7caac-2d53-4c6c-9a6c-3f3d528adf8f
 
 ### 🖼️ Design
 
-![Arquivo-do-medo](/ReadmeMidia/Home.jpeg)
-![Arquivo-do-medo](/ReadmeMidia/Criar.jpeg)
-![Arquivo-do-medo](/ReadmeMidia/Arquivo.jpeg)
+![arq](/ReadmeMidia/Home.jpeg)
+![arq](/ReadmeMidia/Criar.jpeg)
+![arq](/ReadmeMidia/Arquivo.jpeg)
 
 ---
 
@@ -70,7 +109,9 @@ https://github.com/user-attachments/assets/b1d7caac-2d53-4c6c-9a6c-3f3d528adf8f
 - Arquivo rodando em [localhost](http://localhost:3000/)
 
 ```bash
-git clone https://github.com/anabcarvalho30/Arquivo-do-medo
-cd arquivo-do-medo
+git clone https://github.com/anabcarvalho30/PwebII/arq
+cd PwebII
+cd arq
+npm init
 node app.js
 
