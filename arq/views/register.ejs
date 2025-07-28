@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('partials/head', { title: 'Cadastro' , currentPage: 'register' }) %>
+
+  <body>
+    <%- include('partials/header') %>
+
+      <main class="home-container py-5 login">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <form action="/register" method="POST" enctype="multipart/form-data"
+              class="bg-dark text-light p-4 rounded shadow login-form">
+              <h2 class="mb-4 text-center">Novo por aqui?</h2>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" name="nome" id="nome" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="senha" class="form-label">Senha:</label>
+                <input type="password" name="senha" id="senha" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="confirmarSenha" class="form-label">Confirmar Senha:</label>
+                <input type="password" name="confirmarSenha" id="confirmarSenha" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="foto_perfil" class="form-label">Foto de Perfil (opcional):</label>
+                <input type="file" name="foto_perfil" id="foto_perfil" class="form-control" accept=".jpg,.jpeg,.png">
+              </div>
+
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="maiorIdade" id="maiorIdade" required>
+                <label class="form-check-label" for="maiorIdade">
+                  Confirmo que sou maior de 18 anos
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+            </form>
+          </div>
+        </div>
+      </main>
+  </body>
+
+</html>

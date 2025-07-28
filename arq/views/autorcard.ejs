@@ -1,0 +1,54 @@
+<%- include('partials/head', { title: card.titulo, currentPage: 'historia' }) %>
+
+  <main class="card-detalhes-container py-5">
+    <div class="home-container">
+
+      <h2 class="section-title mb-4 gap">
+        <a href="/" class="btn btn-outline-light" title="Voltar">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+
+        <%= card.titulo %>
+
+          <% if (user && user.id===card.autor) { %>
+            <!-- Botões Editar e Deletar -->
+            <a href="/edit/<%= card.id %>" class="btn btn-warning ms-3">Editar</a>
+            <form action="/delete/<%= card.id %>" method="POST" class="d-inline ms-2"
+              onsubmit="return confirm('Tem certeza que quer deletar esta história?');">
+              <button type="submit" class="btn btn-danger">Deletar</button>
+            </form>
+            <% } %>
+      </h2>
+
+      <div class="historia">
+
+        <div class="hist-info">
+
+          <p><strong>
+              <%= card.genero %>
+            </strong> by <strong>
+              <%= user && user.id===card.autor ? user.nome : 'Autor' %>
+            </strong></p>
+
+          <% if (card.tags) { %>
+            <p><strong>Tags:</strong>
+              <% card.tags.split(',').forEach(tag=> { %>
+                <span class="badge bg-secondary me-1 mb-1">
+                  <%= tag.trim() %>
+                </span>
+                <% }) %>
+            </p>
+            <% } %>
+        </div>
+
+        <div class="card-img-container">
+          <img src="/images/covers/<%= card.capa %>" alt="Capa" class="card-img">
+        </div>
+
+        <div class="historia texto bg-light p-3 rounded">
+          <%= card.historia %>
+        </div>
+
+      </div>
+    </div>
+  </main>

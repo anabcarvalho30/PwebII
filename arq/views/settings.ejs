@@ -1,10 +1,52 @@
-<%- include('partials/head', { 
-    title: 'Settings',
-    currentPage: 'settings'}) %>
-        <h1>Página de configurações pessoais e perfil</h1>
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Conteúdo Principal</h5>
-                <p class="card-text">Texto de exemplo</p>
+<%- include('partials/head', { title: 'Perfil' , currentPage: 'settings' }) %>
+
+    <main class="card-detalhes-container py-5">
+        <div class="home-container">
+
+            <h2 class="section-title mb-4 gap">
+                <a href="/" class="btn btn-outline-light" title="Voltar">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </a>
+                Perfil do Usuário
+            </h2>
+
+            <div>
+                <div>
+
+                    <div class="p-4 shadow-sm">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="user-avatar-sett">
+                                    <img src="/images/<%= user.foto_perfil %>" alt="Usuário">
+                                </div>
+                                <p class="text-white">Usuário padrão</p>
+                            </div>
+
+                            <div class="col-md-8 hist-info">
+                                <p>Nome:
+                                    <%= user ? user.nome : 'Visitante' %>
+                                </p>
+                                <p>Email:
+                                    <%= user ? user.email : 'Não disponível' %>
+                                </p>
+
+                                <hr style="border: none; height: 1px; background-color: #ddd;">
+
+                                <a href="/logout" class="btn btn-danger mt-2" onclick="return confirmLogout()">
+                                    <i class="fa fa-sign-out"></i> Sair da conta
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
+    </main>
+    <script>
+        function confirmLogout() {
+            return confirm('Tem certeza que deseja sair da conta?');
+        }
+    </script>

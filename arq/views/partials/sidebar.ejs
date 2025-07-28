@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <img src="/icons/IconArq.png" alt="Logo">
     </div>
-    
+
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link <%= currentPage === 'home' ? 'active' : '' %>" href="/" title="Início">
@@ -15,15 +15,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <%= currentPage === 'manage' ? 'active' : '' %>" href="/manage" title="Gerenciar publicações">
+            <a class="nav-link <%= currentPage === 'manage' ? 'active' : '' %>" href="/manage"
+                title="Gerenciar publicações">
                 <i class="fas fa-folder"></i>
             </a>
         </li>
     </ul>
-    
+
     <div class="user-avatar">
         <a class="<%= currentPage === 'settings' ? 'active' : '' %>" href="/settings" title="Configurações">
-            <img src="/images/user-avatar.jpg" alt="Usuário">
+            <img src="/images/<%= user ? user.foto_perfil : 'default-profile.png' %>" alt="Usuário">
+
         </a>
     </div>
 </div>

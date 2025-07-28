@@ -8,7 +8,7 @@
     background-color: rgba(138, 147, 155, 0.8);
     border-radius: 8px;
     padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .cover-preview {
@@ -46,7 +46,7 @@
     .create-form {
         padding: 1.5rem;
     }
-    
+
     #postContent {
         min-height: 300px;
     }
