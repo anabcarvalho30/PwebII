@@ -28,8 +28,8 @@
 
 ## Rotas
 
-![arq](/ReadmeMidia/Rotas.png)
-![arq](/ReadmeMidia/Caminho.png)
+![arq](ReadmeMidia/Rotas.png)
+![arq](ReadmeMidia/Caminho.png)
 
 📁 arquivo-do-medo/
 ├── 📁 public/
@@ -92,9 +92,9 @@ https://github.com/user-attachments/assets/b1d7caac-2d53-4c6c-9a6c-3f3d528adf8f
 
 ### 🖼️ Design
 
-![arq](/ReadmeMidia/Home.jpeg)
-![arq](/ReadmeMidia/Criar.jpeg)
-![arq](/ReadmeMidia/Arquivo.jpeg)
+![arq](ReadmeMidia/Home.jpeg)
+![arq](ReadmeMidia/Criar.jpeg)
+![arq](ReadmeMidia/Arquivo.jpeg)
 
 ---
 
