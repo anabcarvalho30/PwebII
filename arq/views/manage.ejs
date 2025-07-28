@@ -1,38 +1,40 @@
-<%- include('partials/head', { title: 'Manage' , currentPage: 'manage' }) %>
-  <main class="home-container">
-    <div class="container-fluid px-3 py-4">
-      <h2 class="section-title mb-4">Suas publicações</h2>
-      <div class="row g-4">
-        <% if (card.length===0) { %>
-          <p>Você ainda não publicou nenhuma história.</p>
-          <% } else { %>
-            <% card.forEach(card=> { %>
-              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm hover-effect">
-                  <div class="card-img-top position-relative"
-                    style="height: 180px; background-image: url('/images/covers/<%= card.capa %>'); background-size: cover;">
-                    <span class="badge bg-dark bg-opacity-75 position-absolute top-10 start-10">
-                      <%= card.genero %>
-                    </span>
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title text-dark">
-                      <%= card.titulo %>
-                    </h5>
-                    <p class="card-text text-muted small">Por: <%= card.autor %>
-                    </p>
-                    <div>
-                      <% card.tags.split(',').forEach(tag=> { %>
-                        <span class="badge bg-secondary text-white me-1">
-                          <%= tag.trim() %>
-                        </span>
-                        <% }) %>
-                    </div>
+<%- include('partials/head', { title: 'Manage', currentPage: 'manage' }) %>
+
+<main class="home-container">
+  <div class="container-fluid px-3 py-4">
+    <h2 class="section-title mb-4">Suas publicações</h2>
+    <div class="row g-4">
+      <% if (card.length === 0) { %>
+        <p>Você ainda não publicou nenhuma história.</p>
+      <% } else { %>
+        <% card.forEach(card => { %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="/cardedit/<%= card.id %>" class="text-decoration-none text-reset">
+              <div class="card h-100 border-0 shadow-sm hover-effect">
+                <div class="card-img-top position-relative"
+                  style="height: 180px; background-image: url('/images/covers/<%= card.capa %>'); background-size: cover;">
+                  <span class="badge bg-dark bg-opacity-75 position-absolute top-10 start-10">
+                    <%= card.genero %>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-dark">
+                    <%= card.titulo %>
+                  </h5>
+                  <p class="card-text text-muted small">Por: <%= card.autornome %></p>
+                  <div>
+                    <% card.tags.split(',').forEach(tag => { %>
+                      <span class="badge bg-secondary text-white me-1">
+                        <%= tag.trim() %>
+                      </span>
+                    <% }) %>
                   </div>
                 </div>
               </div>
-              <% }) %>
-                <% } %>
-      </div>
+            </a>
+          </div> <!-- <-- Aqui fecha a coluna corretamente -->
+        <% }) %>
+      <% } %>
     </div>
-  </main>
+  </div>
+</main>

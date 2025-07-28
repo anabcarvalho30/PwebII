@@ -1,0 +1,99 @@
+<%- include('partials/head', { title: 'Editar Publicação', currentPage: 'edit' }) %>
+
+<main class="home-container">
+  <div class="container-fluid px-3 py-4">
+    <h1 class="section-title mb-4">Editar publicação</h1>
+    <div class="container-lg">
+
+      <!-- Formulário de edição -->
+      <form class="create-form" action="/edit/<%= card.id %>" method="POST" enctype="multipart/form-data">
+        <!-- Seção de Upload -->
+        <div class="mb-5">
+          <h2 class="h4 mb-3 text-white">Capa</h2>
+          <div class="d-flex flex-column flex-lg-row gap-4">
+            <div class="flex-shrink-0">
+              <div
+                class="cover-preview ratio ratio-16x9 bg-light rounded mb-3 d-flex align-items-center justify-content-center"
+                id="coverPreview"
+                style="background-image: url('/images/covers/<%= card.capa %>'); background-size: cover; background-position: center;">
+              </div>
+
+              <input type="file" name="capa" id="coverUpload" accept="image/*" class="d-none">
+              <button type="button" class="btn btn-outline-dark w-100"
+                onclick="document.getElementById('coverUpload').click()">
+                <i class="fas fa-upload me-2"></i> Escolher nova imagem
+              </button>
+            </div>
+
+            <div class="flex-grow-1">
+              <div class="bg-light p-3 rounded">
+                <p class="fw-medium mb-2">Recomendações:</p>
+                <ul class="text-muted small mb-0">
+                  <li>Formatos aceitos: JPG, PNG</li>
+                  <li>Dimensões ideais: 4/3</li>
+                  <li>Tamanho máximo: 3MB</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Campo de Título -->
+        <div class="mb-5">
+          <label for="postTitle" class="form-label h4 text-white">Título</label>
+          <input type="text" class="form-control form-control-lg py-3 bg-secondary border-0" id="postTitle"
+            name="titulo" value="<%= card.titulo %>" required>
+        </div>
+
+        <!-- Campo de Gênero -->
+        <div class="mb-5">
+          <label for="postGenero" class="form-label h4 text-white">Gênero</label>
+          <input type="text" class="form-control form-control-lg py-3 bg-secondary border-0" id="postGenero"
+            name="genero" value="<%= card.genero %>" required>
+        </div>
+
+        <!-- Campo de Tags -->
+        <div class="mb-5">
+          <label class="form-label h4 text-white">Tags</label>
+          <div class="border rounded p-3 bg-secondary border-0">
+            <div class="d-flex flex-wrap align-items-center gap-2" id="tagsContainer">
+              <input name="tags" type="text" class="form-control border-0 bg-transparent px-2 py-1 flex-grow-1"
+                id="tagInput" value="<%= card.tags %>" placeholder="Separe por vírgulas (ex: fantasia, aventura)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor de Texto -->
+        <div class="mb-4">
+          <label for="postContent" class="form-label h4 text-white">Sua história aqui...</label>
+          <textarea name="historia" class="form-control p-3 bg-secondary border-0" id="postContent" rows="18"
+            required><%= card.historia %></textarea>
+        </div>
+
+        <button type="submit" id="publishBtn" class="btn btn-success px-4 py-2">
+          <i class="fas fa-save me-2"></i> Salvar Alterações
+        </button>
+      </form>
+
+    </div>
+  </div>
+</main>
+<script>
+  const fileInput = document.getElementById('coverUpload');
+  const previewDiv = document.getElementById('coverPreview');
+
+  fileInput.addEventListener('change', function () {
+    const file = fileInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        previewDiv.style.backgroundImage = `url(${e.target.result})`;
+        previewDiv.innerHTML = ''; // Remove o ícone padrão
+      }
+
+      reader.readAsDataURL(file);
+    }
+  });
+</script>

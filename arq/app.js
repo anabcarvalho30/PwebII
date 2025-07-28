@@ -94,20 +94,12 @@ app.get('/settings', checkAuth, (req, res) => {
   res.render('settings', { user: req.session.user });
 });
 
-// Página manage
 app.get('/manage', checkAuth, (req, res) => {
   const autorId = req.session.user.id;
 
-  const query = `
-    SELECT card.*, users.nome AS nome_autor
-    FROM card
-    JOIN users ON card.autor = users.id
-    WHERE autor = ?
-  `;
-
-  db.all(query, [autorId], (err, rows) => {
+  db.all('SELECT * FROM card WHERE autorid = ?', [autorId], (err, rows) => {
     if (err) {
-      console.error(err);
+      console.error('Erro no banco ao buscar publicações:', err);
       return res.status(500).send("Erro ao buscar suas publicações.");
     }
 
@@ -115,48 +107,58 @@ app.get('/manage', checkAuth, (req, res) => {
   });
 });
 
-
-// Página manage/edição
-// Rota para editar publicação existente
-app.get('/edit/:id', checkAuth, (req, res) => {
+app.get('/cardedit/:id', checkAuth, (req, res) => {
   const id = req.params.id;
-  db.get('SELECT * FROM card WHERE id = ?', [id], (err, card) => {
-    if (err) return res.status(500).send('Erro ao buscar a publicação.');
-    if (!card) return res.status(404).send('Publicação não encontrada.');
-    res.render('create', { editMode: true, card, user: req.session.user });
+  db.get('SELECT * FROM card WHERE id = ?', [id], (err, row) => {
+    if (err) return res.status(500).send("Erro ao buscar a história.");
+    if (!row) return res.status(404).send("História não encontrada.");
+    res.render('cardedit', { card: row, user: req.session.user });
   });
 });
 
-// Editar
-const uploadSingle = upload.single('capa');
+app.post('/edit/:id', checkAuth, upload.single('capa'), (req, res) => {
+  const { titulo, genero, tags, historia } = req.body;
+  const id = req.params.id;
 
-app.post('/edit/:id', checkAuth, (req, res) => {
-  const storyId = req.params.id;
-  const userId = req.session.user.id;
+  db.get('SELECT * FROM card WHERE id = ?', [id], (err, card) => {
+    if (err) return res.status(500).send("Erro ao buscar a história.");
+    if (!card) return res.status(404).send("História não encontrada.");
+    if (card.autorid !== req.session.user.id) return res.status(403).send("Acesso negado.");
 
-  // Usar o multer para upload da capa
-  uploadSingle(req, res, (err) => {
-    if (err) return res.status(400).send('Erro no upload da imagem.');
+    const novaCapa = req.file ? req.file.filename : card.capa;
 
-    // Buscar história para verificar autor e dados antigos da capa
-    db.get('SELECT * FROM card WHERE id = ?', [storyId], (err, card) => {
-      if (err) return res.status(500).send('Erro ao buscar a história.');
-      if (!card) return res.status(404).send('História não encontrada.');
-      if (card.autor !== userId) return res.status(403).send('Você não tem permissão para editar esta história.');
+    db.run(`
+      UPDATE card
+      SET titulo = ?, genero = ?, tags = ?, historia = ?, capa = ?
+      WHERE id = ?
+    `, [titulo, genero, tags, historia, novaCapa, id], function (err) {
+      if (err) {
+        console.error('Erro ao atualizar:', err);
+        return res.status(500).send('Erro ao atualizar publicação.');
+      }
 
-      // Campos editáveis
-      const { titulo, tags, historia, genero } = req.body;
-      const capa = req.file ? req.file.filename : card.capa; // usa nova capa se enviada, senão mantém antiga
-
-      db.run(`UPDATE card SET titulo = ?, genero = ?, capa = ?, tags = ?, historia = ? WHERE id = ?`,
-        [titulo, genero, capa, tags, historia, storyId],
-        (err) => {
-          if (err) return res.status(500).send('Erro ao atualizar a história.');
-          res.redirect('/manage');
-        });
+      res.redirect(`/card/${id}`);
     });
   });
 });
+
+
+// Página de edição de uma história
+app.get('/edit/:id', checkAuth, (req, res) => {
+  const id = req.params.id;
+
+  db.get('SELECT * FROM card WHERE id = ?', [id], (err, row) => {
+    if (err) return res.status(500).send("Erro ao buscar a história.");
+    if (!row) return res.status(404).send("História não encontrada.");
+
+    if (row.autorid !== req.session.user.id) {
+      return res.status(403).send("Você não tem permissão para editar esta história.");
+    }
+
+    res.render('edicao', { card: row, user: req.session.user });
+  });
+});
+
 
 //Deletar história
 app.post('/delete/:id', checkAuth, (req, res) => {
@@ -166,7 +168,7 @@ app.post('/delete/:id', checkAuth, (req, res) => {
   db.get('SELECT * FROM card WHERE id = ?', [storyId], (err, card) => {
     if (err) return res.status(500).send('Erro ao buscar a história.');
     if (!card) return res.status(404).send('História não encontrada.');
-    if (card.autor !== userId) return res.status(403).send('Você não tem permissão para deletar esta história.');
+    if (card.autorid !== userId) return res.status(403).send('Você não tem permissão para deletar esta história.');
 
     db.run('DELETE FROM card WHERE id = ?', [storyId], (err) => {
       if (err) return res.status(500).send('Erro ao deletar a história.');
@@ -174,8 +176,6 @@ app.post('/delete/:id', checkAuth, (req, res) => {
     });
   });
 });
-
-
 
 // Cadastro de usuário
 app.post('/register', uploadUserPhoto.single('foto_perfil'), (req, res) => {
@@ -215,20 +215,23 @@ app.post('/login', (req, res) => {
 app.post('/criar-historia', checkAuth, upload.single('capa'), (req, res) => {
   const { titulo, tags, historia, genero } = req.body;
   const capa = req.file ? req.file.filename : 'default.jpg';
-  const autor = req.session.user.nome;
+
+  const autorid = req.session.user.id;     // id do usuário logado
+  const autornome = req.session.user.nome; // nome do usuário logado
 
   db.run(`
-    INSERT INTO card (titulo, autor, genero, capa, tags, historia)
-    VALUES (?, ?, ?, ?, ?, ?)`,
-    [titulo, autor, genero, capa, tags, historia],
+    INSERT INTO card (titulo, autorid, autornome, genero, capa, tags, historia)
+    VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [titulo, autorid, autornome, genero, capa, tags, historia],
     function (err) {
       if (err) {
-        console.error(err);
+        console.error('Erro no banco ao salvar história:', err); // log mais detalhado
         return res.status(500).send("Erro ao salvar a história.");
       }
       res.redirect('/');
     });
 });
+
 
 // Enviar feedback via email
 app.post('/send-feedback', (req, res) => {

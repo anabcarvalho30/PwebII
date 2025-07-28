@@ -88,7 +88,6 @@ db.serialize(() => {
       }
     });
   }
-  // Inserir cards iniciais se não existirem
 });
 
 module.exports = db;

@@ -47,10 +47,10 @@
 
 .gap {
     display: flex;
-    gap: 2rem;
+    gap: 4rem;
+    align-items: baseline;
 }
 
-.gap a {
-    margin-bottom: 5px;
-
+.gap button {
+    align-self: flex-end;
 }

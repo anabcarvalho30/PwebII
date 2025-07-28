@@ -1,0 +1,58 @@
+<%- include('partials/head', { title: card.titulo, currentPage: 'historia' }) %>
+
+    <main class="card-detalhes-container py-5">
+        <div class="home-container">
+
+            <h2 class="section-title mb-4">
+                <div class="gap">
+                    <a href="/" class="btn btn-outline-light" title="Voltar">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
+
+                    <%= card.titulo %>
+
+                        <% if (user && user.id===card.autorid) { %>
+                            <a href="/edit/<%= card.id %>" class="btn btn-primary">
+                                <i class="fa fa-pencil"></i> Editar História
+                            </a>
+
+                            <form action="/delete/<%= card.id %>" method="POST"
+                                onsubmit="return confirm('Tem certeza que deseja deletar esta história?');">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Deletar História
+                                </button>
+                            </form>
+                            <% } %>
+                </div>
+            </h2>
+
+            <div class="historia">
+
+                <div class="hist-info">
+
+                    <p><strong>
+                            <%= card.genero %>
+                        </strong> by <strong>
+                            <%= card.autornome %>
+                        </strong>
+
+                        <% if (card.tags) { %>
+                            <p><strong>Tags:</strong>
+                                <% card.tags.split(',').forEach(tag=> { %>
+                                    <span class="badge bg-secondary me-1 mb-1">
+                                        <%= tag.trim() %>
+                                    </span>
+                                    <% }) %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="card-img-container">
+                    <img src="/images/covers/<%= card.capa %>" alt="Capa" class="card-img">
+                </div>
+
+                <div class="historia texto bg-light p-3 rounded">
+                    <%= card.historia %>
+                </div>
+            </div>
+        </div>
+    </main>
