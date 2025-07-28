@@ -2,16 +2,9 @@
 
 ---
 
-## 🕯️ Sobre o Projeto
+## Sobre o Projeto
 
-**Arquivo do Medo** é um portal sombrio onde você pode:
-
-- ✍️ Escrever e publicar seus contos de terror originais  
-- 📂 Compartilhar creepypastas arrepiantes  
-- 💀 Discutir histórias já existentes  
-- 🔍 Explorar os relatos mais perturbadores da comunidade  
-
-> *"Abra este arquivo por sua conta e risco... alguns contos nunca deveriam ser lidos."*
+**Arquivo do Medo** Portal de publicações de histórias:
 
 ---
 
@@ -19,70 +12,29 @@
 
 | Seção         | Descrição                                        |
 |---------------|--------------------------------------------------|
-| 🏠 Home        | Página inicial com histórias em destaque         |
-| 📁 Arquivos    | Todas as suas publicações na comunidade          |
-| ✒️ Publicar    | Área para criar novas histórias de terror        |
-| 👤 Usuário     | Perfil pessoal (em desenvolvimento)              |
+| 🏠 Home       | Página inicial com histórias em destaque         |
+| 📁 Arquivos   | Todas as suas publicações na comunidade          |
+| ✏️ Publicação | Página de publicação qualquer                    |  
+| ✏️ Publicação User | Aba da publicação do usuário                |
+| ✒️ Edição     | Semelhante a 'Publicar' - Editar / Deletar       |
+| ✒️ Publicar   | Área para criar novas histórias de terror        |
+| 👤 Usuário    | Perfil pessoal                                   |
+| 👤 Login      | Formulário de Login                              |
+| 👤 Register   | Formulário de Registro                           |
+
+## Funções a serem implementadas e melhorias:
+
+- User editar UserInfo;
+- Deletar imagens do banco de dados após deletar usuário ou publicação;
+- Erro nas tags ao criar publicação;
+- Erro na textarea onde se encontra o text;
+- Adicionar funcionalidades diversas para dinamismo dos usuários - Seguir; Bloquear; Favoritar histórias; Comentar.
 
 ---
 
-## Rotas
+## Informações
 
-![arq](ReadmeMidia/Rotas.png)
-![arq](ReadmeMidia/Caminho.png)
-
-📁 arquivo-do-medo/
-├── 📁 public/
-│   ├── 📁 css/
-│   │   ├── 📄 forms.css
-│   │   ├── 📄 create.css
-│   │   ├── 📄 layout.css
-│   │   ├── 📄 main.css
-│   │   ├── 📄 history.css
-│   │   ├── 📄 sidenavbar.css
-│   │   ├── 📄 utilities.css
-│   │   └── 📄 variables.css
-│   ├── 📁 icons/
-│   │   └── 📄 IconArq.png
-│   ├── 📁 images/
-│   │   └── 📁 covers
-│   └── 📁 js/
-│       ├── 📄 create.js
-│       └── 📄 feedback.js
-│
-├── 📁 views/
-│   ├── 📁 partials/
-│   │   ├── 📄 head.ejs
-│   │   ├── 📄 header.ejs
-│   │   └── 📄 sidebar.ejs
-│   ├── 📄 autorcard.ejs
-│   ├── 📄 card.ejs
-│   ├── 📄 create.ejs
-│   ├── 📄 edicao.ejs
-│   ├── 📄 home.ejs
-│   ├── 📄 login.ejs
-│   ├── 📄 manage.ejs
-│   ├── 📄 cardedit.ejs
-│   ├── 📄 register.ejs
-│   └── 📄 settings.ejs
-├── 📄 app.js
-├── 📄 database.js
-├── 📄 package-lock.json
-└── 📄 package.json
-
----
-
-## 🎭 Diferenciais
-
-- 🌑 Interface imersiva com tema de terror  
-- 🔖 Sistema de tags para categorias de horror  
-- 🚫 Avisos de conteúdo sensível  
-
----
-
-## 🖼️ Informações
-
-### 🎥 Vídeo Tour pelo Site
+### Vídeo Tour pelo Site
 
 
 
@@ -90,15 +42,21 @@ https://github.com/user-attachments/assets/b1d7caac-2d53-4c6c-9a6c-3f3d528adf8f
 
 
 
-### 🖼️ Design
+### Design
 
 ![arq](ReadmeMidia/Home.jpeg)
-![arq](ReadmeMidia/Criar.jpeg)
-![arq](ReadmeMidia/Arquivo.jpeg)
+![arq](ReadmeMidia/Regist.jpeg)
+![arq](ReadmeMidia/Login.jpeg)
+![arq](ReadmeMidia/UserPage.jpeg)
+![arq](ReadmeMidia/Forms.jpeg)
+![arq](ReadmeMidia/NewHist.jpeg)
+![arq](ReadmeMidia/UserHist.jpeg)
+![arq](ReadmeMidia/EditHist.jpeg)
+
 
 ---
 
-## 💀 Como Executar Localmente
+## Como Executar Localmente
 
 ### ✅ Pré-requisitos
 

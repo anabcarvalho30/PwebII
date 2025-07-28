@@ -177,6 +177,26 @@ app.post('/delete/:id', checkAuth, (req, res) => {
   });
 });
 
+app.post('/deleteUser', checkAuth, (req, res) => {
+  const userId = req.session.user.id;
+  
+  db.get('SELECT * FROM users WHERE id = ?', [userId], (err, user) => {
+    if (err) return res.status(500).send('Erro ao buscar o usuário.');
+    if (!user) return res.status(404).send('Usuário não encontrado.');
+
+    db.run('DELETE FROM users WHERE id = ?', [userId], (err) => {
+      if (err) return res.status(500).send('Erro ao deletar o usuário.');
+
+      req.session.destroy(() => {
+        res.redirect('/');
+        console.log('Usuário deletado');
+      });
+    });
+  });
+});
+
+
+
 // Cadastro de usuário
 app.post('/register', uploadUserPhoto.single('foto_perfil'), (req, res) => {
   const { nome, email, senha, confirmarSenha, maiorIdade } = req.body;

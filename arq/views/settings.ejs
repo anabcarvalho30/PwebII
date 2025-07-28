@@ -3,6 +3,7 @@
     <main class="card-detalhes-container py-5">
         <div class="home-container">
 
+
             <h2 class="section-title mb-4 gap">
                 <a href="/" class="btn btn-outline-light" title="Voltar">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -19,7 +20,6 @@
                                 <div class="user-avatar-sett">
                                     <img src="/images/<%= user.foto_perfil %>" alt="Usuário">
                                 </div>
-                                <p class="text-white">Usuário padrão</p>
                             </div>
 
                             <div class="col-md-8 hist-info">
@@ -32,9 +32,18 @@
 
                                 <hr style="border: none; height: 1px; background-color: #ddd;">
 
-                                <a href="/logout" class="btn btn-danger mt-2" onclick="return confirmLogout()">
-                                    <i class="fa fa-sign-out"></i> Sair da conta
-                                </a>
+                                <div class="side">
+                                    <a href="/logout" class="btn btn-danger" onclick="return confirmLogout()">
+                                        <i class="fa fa-sign-out"></i> Sair da conta
+                                    </a>
+                                
+                                <form action="/deleteUser" method="POST"
+                                    onsubmit="return confirm('Tem certeza que deseja deletar esta conta? Você não terá mais acesso às suas publicações!');">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i> Deletar conta
+                                    </button>
+                                </form>
+                                </div>
 
                             </div>
                         </div>

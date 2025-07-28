@@ -90,7 +90,7 @@
 
       reader.onload = function (e) {
         previewDiv.style.backgroundImage = `url(${e.target.result})`;
-        previewDiv.innerHTML = ''; // Remove o ícone padrão
+        previewDiv.innerHTML = ''; 
       }
 
       reader.readAsDataURL(file);

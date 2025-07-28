@@ -90,7 +90,6 @@
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
-    /* Centraliza */
 }
 
 .user-avatar-sett img {
@@ -102,4 +101,10 @@
 
 .login {
     margin-top: 3rem;
+}
+
+/* CSS settings */
+.side {
+    display: flex;
+    gap: 3rem;
 }
